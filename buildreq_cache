@@ -1,0 +1,7 @@
+1.1
+R-Rcpp
+R-askpass
+R-curl
+libjpeg-turbo-dev
+pkgconfig(zlib)
+zlib-dev
