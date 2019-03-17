@@ -4,18 +4,17 @@
 #
 Name     : R-qpdf
 Version  : 1.1
-Release  : 2
+Release  : 3
 URL      : https://cran.r-project.org/src/contrib/qpdf_1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qpdf_1.1.tar.gz
 Summary  : Split, Combine and Compress PDF Files
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: R-qpdf-lib = %{version}-%{release}
-Requires: R-Rcpp
-Requires: R-askpass
-Requires: R-curl
+Requires: R-assertthat
 BuildRequires : R-Rcpp
 BuildRequires : R-askpass
+BuildRequires : R-assertthat
 BuildRequires : R-curl
 BuildRequires : buildreq-R
 BuildRequires : libjpeg-turbo-dev
@@ -42,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552312014
+export SOURCE_DATE_EPOCH=1552783256
 
 %install
-export SOURCE_DATE_EPOCH=1552312014
+export SOURCE_DATE_EPOCH=1552783256
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -81,8 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library qpdf|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  qpdf || :
 
 
 %files
@@ -107,10 +105,11 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/qpdf/help/qpdf.rdx
 /usr/lib64/R/library/qpdf/html/00Index.html
 /usr/lib64/R/library/qpdf/html/R.css
-/usr/lib64/R/library/qpdf/libs/symbols.rds
+/usr/lib64/R/library/qpdf/tests/testthat.R
+/usr/lib64/R/library/qpdf/tests/testthat/pdf-example-password.original.pdf
+/usr/lib64/R/library/qpdf/tests/testthat/test-password-callback.R
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/qpdf/libs/qpdf.so
 /usr/lib64/R/library/qpdf/libs/qpdf.so.avx2
-/usr/lib64/R/library/qpdf/libs/qpdf.so.avx512

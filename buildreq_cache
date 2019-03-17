@@ -1,6 +1,7 @@
 1.1
 R-Rcpp
 R-askpass
+R-assertthat
 R-curl
 libjpeg-turbo-dev
 pkgconfig(zlib)
