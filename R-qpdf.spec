@@ -4,17 +4,18 @@
 #
 Name     : R-qpdf
 Version  : 1.1
-Release  : 8
+Release  : 9
 URL      : https://cran.r-project.org/src/contrib/qpdf_1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qpdf_1.1.tar.gz
 Summary  : Split, Combine and Compress PDF Files
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: R-qpdf-lib = %{version}-%{release}
-Requires: R-assertthat
+Requires: R-Rcpp
+Requires: R-askpass
+Requires: R-curl
 BuildRequires : R-Rcpp
 BuildRequires : R-askpass
-BuildRequires : R-assertthat
 BuildRequires : R-curl
 BuildRequires : buildreq-R
 BuildRequires : libjpeg-turbo-dev
@@ -40,13 +41,13 @@ lib components for the R-qpdf package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552783256
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569368138
 
 %install
-export SOURCE_DATE_EPOCH=1552783256
+export SOURCE_DATE_EPOCH=1569368138
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -75,12 +76,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  qpdf || :
+R CMD check --no-manual --no-examples --no-codoc qpdf || :
 
 
 %files
