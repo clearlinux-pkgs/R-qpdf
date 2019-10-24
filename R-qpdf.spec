@@ -4,7 +4,7 @@
 #
 Name     : R-qpdf
 Version  : 1.1
-Release  : 9
+Release  : 10
 URL      : https://cran.r-project.org/src/contrib/qpdf_1.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qpdf_1.1.tar.gz
 Summary  : Split, Combine and Compress PDF Files
@@ -20,6 +20,7 @@ BuildRequires : R-curl
 BuildRequires : buildreq-R
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : pkgconfig(zlib)
+BuildRequires : util-linux
 BuildRequires : zlib-dev
 
 %description
@@ -42,10 +43,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569368138
+export SOURCE_DATE_EPOCH=1571881899
 
 %install
-export SOURCE_DATE_EPOCH=1569368138
+export SOURCE_DATE_EPOCH=1571881899
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
