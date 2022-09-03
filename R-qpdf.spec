@@ -4,7 +4,7 @@
 #
 Name     : R-qpdf
 Version  : 1.2.0
-Release  : 31
+Release  : 32
 URL      : https://cran.r-project.org/src/contrib/qpdf_1.2.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/qpdf_1.2.0.tar.gz
 Summary  : Split, Combine and Compress PDF Files
